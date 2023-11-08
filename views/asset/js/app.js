@@ -1,31 +1,21 @@
-var splide = new Splide( '.splide' );
-splide.mount();
+$(document).ready(function () {
+  var docWidth = $("body").width(),
+    $wrap = $("#wrap"),
+    $images = $("#wrap .hb"),
+    slidesWidth = $wrap.width();
 
+  $(window).on("resize", function () {
+    docWidth = $("body").width();
+    slidesWidth = $wrap.width();
+  });
 
-ScrollReveal().reveal('.card', {delay: 600,distance: '100px'});
+  $(document).mousemove(function (e) {
+    var mouseX = e.pageX,
+      offset = (mouseX / docWidth) * slidesWidth - mouseX / 2;
 
-
-
-
-var swiper = new Swiper(".mySwiper", {
-spaceBetween: 30,
-centeredSlides: true,
-autoplay: {
-    delay: 15000,
-    disableOnInteraction: false,
-},
-pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-},
-
+    $images.css({
+      "-webkit-transform": "translate3d(" + -offset + "px,0,0)",
+      transform: "translate3d(" + -offset + "px,0,0)",
+    });
+  });
 });
-
-$( function() {
-    $( "#datepicker" ).datepicker();
-} );
-
-$( function() {
-    $( "#datepicker2" ).datepicker();
-} );
-

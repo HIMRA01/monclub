@@ -67,4 +67,3 @@
 
 
 
-../asset/img/azer.png
